@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import Counter from "../components/Counter";
+import Counter from "../components/counter/Counter";
 import Card from "../components/card/Card";
 import CardTitle from "../components/card/CardTitle";
 import CardContent from "../components/card/CardContent";

@@ -10,7 +10,7 @@
     "jsx": "preserve",
     "lib": [
       "dom",
-      "es2017"
+      "es6"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -25,7 +25,8 @@
     "incremental": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "jest"
   ],
   "include": [
     "**/*.ts",

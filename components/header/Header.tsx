@@ -11,10 +11,10 @@ const HeaderContainer = styled.div`
   margin-bottom: 50px;
 `
 const Header = () => {
-    return <HeaderContainer>
-        <HeaderTitle>My Starter Application</HeaderTitle>
-        <Link url="/about">About</Link>
-    </HeaderContainer>
+  return <HeaderContainer>
+    <HeaderTitle>My Starter Application</HeaderTitle>
+    <Link url="/about">About</Link>
+  </HeaderContainer>
 }
 
 export default Header

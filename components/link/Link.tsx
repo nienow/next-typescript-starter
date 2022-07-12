@@ -9,11 +9,11 @@ const LinkContainer = styled.div`
 `
 
 const Link = ({url, children}) => {
-    const goToUrl = () => {
-        window.location.href = url;
-    }
+  const goToUrl = () => {
+    window.location.href = url;
+  }
 
-    return <LinkContainer onClick={goToUrl}>{children}</LinkContainer>
+  return <LinkContainer onClick={goToUrl}>{children}</LinkContainer>
 }
 
 export default Link

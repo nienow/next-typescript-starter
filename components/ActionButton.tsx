@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {ReactNode} from 'react';
 import styled from 'styled-components';
-import { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
@@ -14,7 +14,7 @@ const Button = styled.button`
   width: 100%;
 `
 
-const ActionButton = ({ children, onClick, disabled }: Props) => (
+const ActionButton = ({children, onClick, disabled}: Props) => (
   <Button onClick={onClick} disabled={disabled}>{children}</Button>
 )
 

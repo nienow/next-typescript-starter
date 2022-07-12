@@ -7,9 +7,9 @@ const FooterContainer = styled.div`
   margin-top: 50px;
 `
 const Footer = () => {
-    return <FooterContainer>
-        <DebugLogs></DebugLogs>
-    </FooterContainer>
+  return <FooterContainer>
+    <DebugLogs></DebugLogs>
+  </FooterContainer>
 }
 
 export default Footer

@@ -1,35 +1,41 @@
-import {
-	createContext,
-	useContext,
-	useReducer
-} from 'react';
+import {createContext, useContext, useMemo, useReducer} from 'react';
 
 interface DebugLog {
-	log: string;
-	ts: Date;
+  log: string;
+  ts: Date;
 }
 
-interface IDebugContext {
-	logs: DebugLog[];
-	addLog: (l: string) => void;
+interface ILogContext {
+  logs: DebugLog[];
 }
 
-const DebugContext = createContext<IDebugContext>({
-	logs: [],
-	addLog: () => {}
+interface IAddLogContext {
+  addLog: (l: string) => void;
+}
+
+const LogContext = createContext<ILogContext>({
+  logs: [],
 });
 
-export const useDebug = () => useContext(DebugContext);
+const AddLogContext = createContext<IAddLogContext>({
+  addLog: () => {
+  }
+});
 
-export const DebugProvider = ({ children }) => {
-	const [ logs, addLog ] = useReducer(
-		(logs, newLog) => ([{log: newLog, ts: new Date()}, ...logs]),
-		[]
-	)
+export const useLog = () => useContext(LogContext);
+export const useAddLog = () => useContext(AddLogContext);
 
-	return (
-		<DebugContext.Provider value={{ logs, addLog }}>
-			{children}
-		</DebugContext.Provider>
-	);
+export const DebugProvider = ({children}) => {
+  const [logs, addLog] = useReducer(
+    (logs, newLog) => ([{log: newLog, ts: new Date()}, ...logs]),
+    []
+  )
+
+  return (
+    <LogContext.Provider value={{logs}}>
+      <AddLogContext.Provider value={useMemo(() => ({addLog}), [addLog])}>
+        {children}
+      </AddLogContext.Provider>
+    </LogContext.Provider>
+  );
 };

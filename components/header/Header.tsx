@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from "react";
 import HeaderTitle from "./HeaderTitle";
 import Link from "../link/Link";
+import ThemeChanger from "../ThemeChanger";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -10,10 +11,19 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin-bottom: 50px;
 `
+
+const RightSide = styled.div`
+  flex: 1 1 auto;
+  text-align: right;
+`
+
 const Header = () => {
   return <HeaderContainer>
     <HeaderTitle>My Starter Application</HeaderTitle>
     <Link url="/about">About</Link>
+    <RightSide>
+      <ThemeChanger></ThemeChanger>
+    </RightSide>
   </HeaderContainer>
 }
 

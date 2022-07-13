@@ -5,6 +5,5 @@ const Card = styled.div`
   border-radius: 3px;
   margin: 10px;
   width: 200px;
-  color: #ddd;
 `
 export default Card

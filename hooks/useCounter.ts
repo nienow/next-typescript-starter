@@ -10,5 +10,10 @@ export default function useCounter() {
     addLog('Increment Counter to ' + (count + 1));
   };
 
-  return {add, count};
+  const reset = () => {
+    setCount(0);
+    addLog('Reset Counter');
+  };
+
+  return {add, count, reset};
 }

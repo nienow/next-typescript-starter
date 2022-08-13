@@ -4,8 +4,8 @@ import Card from "../components/card/Card";
 import CardTitle from "../components/card/CardTitle";
 import CardContent from "../components/card/CardContent";
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = () => {
+  return (<Layout>
     <div>This is the main page</div>
     <Card>
       <CardTitle>Counter</CardTitle>
@@ -13,7 +13,7 @@ const IndexPage = () => (
         <Counter></Counter>
       </CardContent>
     </Card>
-  </Layout>
-)
+  </Layout>);
+}
 
 export default IndexPage

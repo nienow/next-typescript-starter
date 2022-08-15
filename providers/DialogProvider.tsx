@@ -1,5 +1,6 @@
-import {createContext, useContext, useState} from 'react';
-import ConfirmDialog from "../components/dialog/ConfirmDialog";
+import React, {createContext, ReactNode, useContext, useState} from 'react';
+import SimpleDialog from "../components/dialog/SimpleDialog";
+import ActionButton from "../components/ActionButton";
 
 // interface DialogOptions {
 //   text: string;
@@ -7,37 +8,52 @@ import ConfirmDialog from "../components/dialog/ConfirmDialog";
 // }
 
 interface IDialogContext {
-  confirm: (text: string, action: () => void) => void;
+  confirm: (text: string, action: () => void) => () => void;
+  dialog: (contents: ReactNode) => () => void;
+  closeDialog: () => void;
 }
 
 const DialogContext = createContext<IDialogContext>({
-  confirm: null
+  confirm: null,
+  dialog: null,
+  closeDialog: null
 });
 
 export const useDialog = () => useContext(DialogContext);
 
 export const DialogProvider = ({children}) => {
-  const [options, setOptions] = useState(null);
+  const [contents, setContents] = useState(null);
 
   const confirm = (text, action) => {
-    setOptions({text, action});
+    // setOptions({text, action});
+    setContents(
+      <>
+        <div>{text}</div>
+        <ActionButton onClick={() => {
+          action();
+          closeDialog();
+        }}>OK</ActionButton>
+        <ActionButton onClick={closeDialog}>Cancel</ActionButton>
+      </>
+    );
+    return closeDialog;
   };
 
-  const confirmAction = () => {
-    options.action();
-    setOptions(null);
+  const dialog = (contents) => {
+    setContents(contents);
+    return closeDialog;
   };
 
-  const confirmCancel = () => {
-    setOptions(null);
-  };
+  const closeDialog = () => {
+    setContents(null);
+  }
 
   return (
     <>
-      <DialogContext.Provider value={{confirm}}>
+      <DialogContext.Provider value={{confirm, dialog, closeDialog}}>
         {children}
       </DialogContext.Provider>
-      <ConfirmDialog text={options?.text} action={confirmAction} cancel={confirmCancel} open={!!options}></ConfirmDialog>
+      <SimpleDialog open={!!contents}>{contents}</SimpleDialog>
     </>
   );
 };

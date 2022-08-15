@@ -3,6 +3,7 @@ import ActionButton from "../ActionButton";
 import ConfirmDialog from "../dialog/ConfirmDialog";
 import {openConfirmDialog2} from "../dialog/ConfirmDialog2";
 import {useDialog} from "../../providers/DialogProvider";
+import AlertDialog from "../dialog/AlertDialog";
 
 interface Params {
   resetFn: () => void;
@@ -11,7 +12,7 @@ interface Params {
 // let root;
 const ResetButton = (params: Params) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {confirm} = useDialog();
+  const {confirm, dialog, closeDialog} = useDialog();
 
   const openConfirm = () => {
     setIsOpen(true);
@@ -36,6 +37,10 @@ const ResetButton = (params: Params) => {
     setIsOpen(false);
   };
 
+  const alertMe = () => {
+    dialog(<AlertDialog text="This is an alert" closeDialog={closeDialog}></AlertDialog>);
+  };
+
   // const confirmAction2 = () => {
   //   params.resetFn();
   //   root.unmount();
@@ -52,6 +57,7 @@ const ResetButton = (params: Params) => {
     <ActionButton onClick={openConfirm}>Reset</ActionButton>
     <ActionButton onClick={openConfirm2}>Reset2</ActionButton>
     <ActionButton onClick={openConfirm3}>Reset3</ActionButton>
+    <ActionButton onClick={alertMe}>Alert</ActionButton>
   </Fragment>
 }
 

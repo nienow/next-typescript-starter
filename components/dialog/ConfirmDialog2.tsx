@@ -3,6 +3,7 @@ import SimpleDialog from "./SimpleDialog";
 import ActionButton from "../ActionButton";
 import styled from "styled-components";
 import {createRoot} from "react-dom/client";
+import {render} from "react-dom";
 
 interface Params {
   text: string;
@@ -18,17 +19,18 @@ let root;
 
 const closeDialog = () => {
   if (root) {
-    root.unmount();
-    root = undefined;
+    // root.unmount();
+    // root = undefined;
+    console.log(document.getElementById('dialog-container'));
   }
 }
 
 export const openConfirmDialog2 = (text: string, action: () => void) => {
   root = createRoot(document.getElementById('dialog-container'));
-  root.render(<ConfirmDialog2 text={text} action={() => {
+  render(<ConfirmDialog2 text={text} action={() => {
     action();
     closeDialog();
-  }} cancel={closeDialog}></ConfirmDialog2>);
+  }} cancel={closeDialog}></ConfirmDialog2>, document.getElementById('dialog-container'));
 };
 
 // export const openDialog2 = (children) => {

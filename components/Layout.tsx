@@ -19,6 +19,7 @@ const Layout = ({children, title = 'React Typescript Starter'}: Props) => {
     <Header></Header>
     {children}
     <Footer></Footer>
+    <div id="dialog-container"></div>
   </div>
 }
 

@@ -9,7 +9,7 @@ const Counter = () => {
   return <div>
     <div>Count is {count}</div>
     <ActionButton onClick={add}>Add</ActionButton>
-    <ResetButton resetFn={reset}></ResetButton>
+    <ResetButton resetFn={reset} count={count}></ResetButton>
   </div>
 }
 

@@ -8,8 +8,8 @@ function NextWeb3App({Component, pageProps}: AppProps) {
   return (
     <DebugProvider>
       <MultiThemeProvider>
+        <GlobalStyle></GlobalStyle>
         <DialogProvider>
-          <GlobalStyle></GlobalStyle>
           <Component {...pageProps} />
         </DialogProvider>
       </MultiThemeProvider>

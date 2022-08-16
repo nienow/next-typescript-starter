@@ -1,11 +1,6 @@
 import React, {createContext, ReactNode, useContext, useState} from 'react';
 import SimpleDialog from "../components/dialog/SimpleDialog";
-import ActionButton from "../components/ActionButton";
-
-// interface DialogOptions {
-//   text: string;
-//   action: () => void;
-// }
+import ConfirmDialog from "../components/dialog/ConfirmDialog";
 
 interface IDialogContext {
   confirm: (text: string, action: () => void) => () => void;
@@ -25,17 +20,10 @@ export const DialogProvider = ({children}) => {
   const [contents, setContents] = useState(null);
 
   const confirm = (text, action) => {
-    // setOptions({text, action});
-    setContents(
-      <>
-        <div>{text}</div>
-        <ActionButton onClick={() => {
-          action();
-          closeDialog();
-        }}>OK</ActionButton>
-        <ActionButton onClick={closeDialog}>Cancel</ActionButton>
-      </>
-    );
+    setContents(<ConfirmDialog text={text} action={() => {
+      action();
+      closeDialog()
+    }} cancel={closeDialog}></ConfirmDialog>);
     return closeDialog;
   };
 
@@ -49,11 +37,9 @@ export const DialogProvider = ({children}) => {
   }
 
   return (
-    <>
-      <DialogContext.Provider value={{confirm, dialog, closeDialog}}>
-        {children}
-      </DialogContext.Provider>
+    <DialogContext.Provider value={{confirm, dialog, closeDialog}}>
       <SimpleDialog open={!!contents}>{contents}</SimpleDialog>
-    </>
+      {children}
+    </DialogContext.Provider>
   );
 };

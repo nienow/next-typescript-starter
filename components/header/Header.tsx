@@ -3,6 +3,7 @@ import React from "react";
 import HeaderTitle from "./HeaderTitle";
 import Link from "../link/Link";
 import ThemeChanger from "../ThemeChanger";
+import LocaleChanger from "../LocaleChanger";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const Header = () => {
     <HeaderTitle>My Starter Application</HeaderTitle>
     <Link url="/about">About</Link>
     <RightSide>
+      <LocaleChanger></LocaleChanger>
       <ThemeChanger></ThemeChanger>
     </RightSide>
   </HeaderContainer>

@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import ActionButton from "../ActionButton";
 import {useDialog} from "../../providers/DialogProvider";
 import AlertDialog from "../dialog/AlertDialog";
+import I18n from "../I18n";
 
 interface Params {
   resetFn: () => void;
@@ -21,8 +22,12 @@ const ResetButton = (params: Params) => {
   };
 
   return <Fragment>
-    <ActionButton onClick={openConfirm}>Reset</ActionButton>
-    <ActionButton onClick={openAlert}>Alert</ActionButton>
+    <ActionButton onClick={openConfirm}>
+      <I18n name="reset">Reset</I18n>
+    </ActionButton>
+    <ActionButton onClick={openAlert}>
+      <I18n name="alert">Alert</I18n>
+    </ActionButton>
   </Fragment>
 }
 

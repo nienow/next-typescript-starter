@@ -34,5 +34,6 @@
   "license": "MIT",
   "resolutions": {
     "styled-components": "^5"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

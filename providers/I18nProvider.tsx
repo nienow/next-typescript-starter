@@ -1,26 +1,20 @@
 import {createContext, useContext, useState} from "react";
 
-const translations = {
-  es: {
-    helloWorld: 'Hola Mundo',
-    reset: 'Reiniciar',
-    alert: 'Alerta',
-    countDisplay: 'El conteo es {count}'
-  },
-  de: {
-    helloWorld: 'Hallo Welt',
-    reset: 'Zurücksetzen'
-  }
-};
-
-const I18nContext = createContext({t: null, setLocale: null});
+const I18nContext = createContext({});
 export const useI18n = () => useContext(I18nContext);
 
 const I18nProvider = ({children}) => {
-  const [t, setT] = useState(null);
+  const [t, setT] = useState<any>(null);
 
-  const setLocale = (locale: string) => {
-    setT(translations[locale] || {});
+  const setLocale = async (locale: string) => {
+    try {
+      const result = await fetch('/i18n/' + locale + '.json');
+      const json = await result.json();
+      setT(json);
+    } catch {
+      console.log('Failed to fetch translations for locale: ' + locale);
+      setT({});
+    }
   };
 
   return (

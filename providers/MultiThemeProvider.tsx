@@ -3,20 +3,26 @@ import {createContext, useContext, useState} from "react";
 
 export interface MyTheme {
   background: string;
+  action: string;
+  border: string;
   color: string;
 }
 
 const light: MyTheme = {
-  background: '#ccc',
+  background: '#eee',
+  action: '#fff',
+  border: '#ccc',
   color: '#333'
 };
 
 const dark: MyTheme = {
   background: '#333',
+  action: '#222',
+  border: '#111',
   color: '#ccc'
 };
 
-const ThemeContext = createContext({theme: 'light', setTheme: null});
+const ThemeContext = createContext({});
 export const useTheme = () => useContext(ThemeContext);
 
 const MultiThemeProvider = ({children}) => {

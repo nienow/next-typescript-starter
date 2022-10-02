@@ -1,6 +1,11 @@
 import {createContext, useContext, useState} from "react";
 
-const I18nContext = createContext({});
+type I18nContextType = {
+  t: string;
+  setLocale: (locale: string) => void;
+}
+
+const I18nContext = createContext<I18nContextType>(null);
 export const useI18n = () => useContext(I18nContext);
 
 const I18nProvider = ({children}) => {

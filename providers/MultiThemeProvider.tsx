@@ -22,7 +22,12 @@ const dark: MyTheme = {
   color: '#ccc'
 };
 
-const ThemeContext = createContext({});
+type ThemeContextType = {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+const ThemeContext = createContext<ThemeContextType>(null);
 export const useTheme = () => useContext(ThemeContext);
 
 const MultiThemeProvider = ({children}) => {

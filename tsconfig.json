@@ -22,11 +22,25 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/providers/*": [
+        "providers/*"
+      ]
+    }
   },
   "exclude": [
-    "node_modules",
-    "jest"
+    ".yarn"
   ],
   "include": [
     "**/*.ts",

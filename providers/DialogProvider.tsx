@@ -17,7 +17,7 @@ const DialogContext = createContext<IDialogContext>({
 export const useDialog = () => useContext(DialogContext);
 
 export const DialogProvider = ({children}) => {
-  const [contents, setContents] = useState(null);
+  const [contents, setContents] = useState<any>(null);
 
   const confirm = (text, action) => {
     setContents(<ConfirmDialog text={text} action={() => {

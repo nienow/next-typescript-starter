@@ -1,8 +1,8 @@
 import React from "react";
-import useCounter from "../../hooks/useCounter";
-import ActionButton from "../ActionButton";
-import ResetButton from "./ResetButton";
-import I18n from "../I18n";
+import useCounter from "@/hooks/useCounter";
+import I18n from "@/components/I18n";
+import ActionButton from "@/components/ActionButton";
+import ResetButton from "@/components/counter/ResetButton";
 
 const Counter = () => {
   const {count, add, reset} = useCounter();
